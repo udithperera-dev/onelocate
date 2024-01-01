@@ -1,2 +1,2 @@
 # onelocate
- User Loaction Fetching Plugin
+ User Location Fetching Plugin
