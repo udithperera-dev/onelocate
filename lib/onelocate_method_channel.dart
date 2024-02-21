@@ -14,4 +14,10 @@ class MethodChannelOnelocate extends OnelocatePlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<Map<dynamic, dynamic> ?> getLocation() async {
+    final version = await methodChannel.invokeMethod<Map<dynamic, dynamic>>('getLocation');
+    return version;
+  }
 }

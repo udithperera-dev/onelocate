@@ -26,4 +26,8 @@ abstract class OnelocatePlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<Map<dynamic, dynamic>?> getLocation() {
+    throw UnimplementedError('getLocation() has not been implemented.');
+  }
 }

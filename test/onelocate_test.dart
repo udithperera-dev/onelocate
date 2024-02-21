@@ -10,6 +10,12 @@ class MockOnelocatePlatform
 
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<Map<dynamic, dynamic>?> getLocation() {
+    // TODO: implement getLocation
+    throw UnimplementedError();
+  }
 }
 
 void main() {
