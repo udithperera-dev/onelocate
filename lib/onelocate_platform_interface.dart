@@ -23,10 +23,12 @@ abstract class OnelocatePlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  ///for get OS version
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
+  ///for get location details
   Future<Map<dynamic, dynamic>?> getLocation() {
     throw UnimplementedError('getLocation() has not been implemented.');
   }

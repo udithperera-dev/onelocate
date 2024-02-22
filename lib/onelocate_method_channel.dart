@@ -9,6 +9,7 @@ class MethodChannelOnelocate extends OnelocatePlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('onelocate');
 
+  ///for get OS version
   @override
   Future<String?> getPlatformVersion() async {
     final version =
@@ -16,6 +17,7 @@ class MethodChannelOnelocate extends OnelocatePlatform {
     return version;
   }
 
+  ///for get location details
   @override
   Future<Map<dynamic, dynamic>?> getLocation() async {
     final version =

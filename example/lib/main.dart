@@ -31,14 +31,14 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     String platformVersion;
     try {
-      platformVersion =
-          await _onelocatePlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _onelocatePlugin.getPlatformVersion() ??
+          'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
 
     try {
-      await _onelocatePlugin.getLocation().then((value){
+      await _onelocatePlugin.getLocation().then((value) {
         _platformLocation = value!['city'].toString();
         _platformLocation = "$_platformLocation, ${value['country']}";
         _platformLat = value['lat'].toString();
@@ -71,13 +71,21 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset("assets/marker.png"),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text('Running on: $_platformVersion\n'),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text('Locate on: $_platformLocation\n'),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text('Lat: $_platformLat\n'),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text('Lon: $_platformLon\n'),
             ],
           ),
