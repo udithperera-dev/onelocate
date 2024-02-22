@@ -1,4 +1,4 @@
-# <kbd><img src="https://raw.githubusercontent.com/udithperera-dev/oneroot/e44f9473e69bd669c047d54abdb276d9babc4cdd/logo.png" width="50px" alt="logo" align="center" style="border-radius:50%"></kbd> onelocate
+# <kbd><img src="https://raw.githubusercontent.com/udithperera-dev/onelocate/d26d4a2a6694ae40eb7dbdf17d903f6f8cb42f9f/logo.png?token=GHSAT0AAAAAACJWCD27O6QNID4H47VQLXZWZOXBBJA" width="50px" alt="logo" align="center" style="border-radius:50%"></kbd> onelocate
 
 Introducing our innovative geo locate detection plugin called OneLocate, a powerful tool that allows you to check current location coordinates without GPS, Only need internet access only.
 
@@ -102,7 +102,7 @@ String platformVersion = await _onerootPlugin.getPlatformVersion();
     - [Akurupela Applications](https://akurupela.com)
 
 <p align="center">
-      <kbd><img src="https://raw.githubusercontent.com/udithperera-dev/oneroot/e44f9473e69bd669c047d54abdb276d9babc4cdd/logo.png" width="25px" alt="logo" align="center"></kbd>
+      <kbd><img src="https://raw.githubusercontent.com/udithperera-dev/onelocate/d26d4a2a6694ae40eb7dbdf17d903f6f8cb42f9f/logo.png?token=GHSAT0AAAAAACJWCD27O6QNID4H47VQLXZWZOXBBJA" width="25px" alt="logo" align="center"></kbd>
       <kbd><img src="https://www.akurupela.com/assets/images/images_info/ap_logo.png" width="25px" alt="logo" align="center"></kbd>
       <img src="https://storage.googleapis.com/cms-storage-bucket/6a07d8a62f4308d2b854.svg" width="100px" alt="logo" align="center">
       &nbsp;
