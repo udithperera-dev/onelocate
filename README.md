@@ -18,24 +18,35 @@ To use this package, add oneroot as a dependency in your pubspec.yaml file.
 
 - On pubspeck.yaml
 
-```
-oneroot: ^0.1.2
+```yaml
+onelocate: ^0.1.2
 ```
 
 - On Dart Import
 
-```
-import 'package:oneroot/oneroot.dart';
+```dart
+import 'package:onelocate/onelocate.dart';
 ```
 
-- On implementation of Root Detection
+- On implementation of OneLocate
 
-```
+```dart
 //init plugin object
-final _onerootPlugin = Oneroot();
+final _onelocatePlugin = Onelocate();
 
-//Method will return "ROOTED" as a string value if you are running on a rooted environment.
-String platformRootStatus = await _onerootPlugin.getRootChecker();
+//Method will return location info as a dynamic map value.
+//This is a set of properties that can access, 
+
+{
+"country": "",
+"countryCode": "",
+"city": "",
+"zip": "",
+"lat": "",
+"lon": "",
+}
+
+var platformRootStatus = await _onerootPlugin.getLocation();
 
 //Method will return the OS version.
 String platformVersion = await _onerootPlugin.getPlatformVersion();
@@ -50,25 +61,37 @@ String platformVersion = await _onerootPlugin.getPlatformVersion();
   </tr>
   <tr>
     <td width="30%" style="text-align: left;" align="left" valign="top">
-      <li> <sub> <uses-permission android:name="android.permission.INTERNET" /> </sub></li>
+      
+↑ Blank line!
+```manifest
+   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.akurupela.onelocate">
+<uses-permission android:name="android.permission.INTERNET" />
+</manifest>
+```
+↓ Blank line!
     </td>
     <td width="30%" style="text-align: center;" align="left" valign="top">
-       <li> <sub>
-                <key>NSAppTransportSecurity</key>
-                <dict>
-                    <key>NSAllowsArbitraryLoads</key>
-                    <true/>
-                </dict>
-            </sub>
-        </li>
+↑ Blank line!
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+     <key>NSAllowsArbitraryLoads</key>
+     <true/>
+  </dict>
+</plist>
+```
+↓ Blank line!         
     </td>
   </tr>
  </table>
 
 <table>
   <tr>
-    <td>One Root - Android Root Detection</td>
-    <td>One Root - IOS JailBreak Detection</td>
+    <td>One Locate - Android</td>
+    <td>One Locate - IOS</td>
   </tr>
   <tr>
     <td width="30%" style="text-align: center;" align="left" valign="top"><img src="https://github.com/udithperera-dev/oneroot/raw/d27a4354c1438602856b2acf6a2e210e19b56cf5/on_android.png" alt="root" style="width:250px;"/></td>
