@@ -61,7 +61,7 @@ String platformVersion = await _onerootPlugin.getPlatformVersion();
     <td width="30%" style="text-align: left;" align="left" valign="top">
       
 ↑ Blank line!
-```manifest
+```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.akurupela.onelocate">
 <uses-permission android:name="android.permission.INTERNET" />
