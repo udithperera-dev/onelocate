@@ -18,6 +18,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   String _platformLocation = 'Unknown';
+  String _platformLat = 'Unknown';
+  String _platformLon = 'Unknown';
   final _onelocatePlugin = Onelocate();
 
   @override
@@ -26,12 +28,8 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
-    String platformLocation;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
     try {
       platformVersion =
           await _onelocatePlugin.getPlatformVersion() ?? 'Unknown platform version';
@@ -40,20 +38,16 @@ class _MyAppState extends State<MyApp> {
     }
 
     try {
-      // _platformLocation =
-      //     await _onelocatePlugin.getLocation() ?? 'Unknown location';
       await _onelocatePlugin.getLocation().then((value){
-        _platformLocation = value.toString() ?? 'Unknown location';
+        _platformLocation = value!['city'].toString() ?? 'Unknown location';
+        _platformLocation = _platformLocation+", "+ value!['country'].toString() ?? 'Unknown location';
+        _platformLat = value!['lat'].toString() ?? 'Unknown location';
+        _platformLon = value!['lon'].toString() ?? 'Unknown location';
       });
     } on PlatformException {
       platformVersion = 'Failed to get location.';
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
-
     setState(() {
       _platformVersion = platformVersion;
     });
@@ -62,12 +56,31 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'One Locate',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        primaryColor: Colors.green,
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('One Locate'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n $_platformLocation\n'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/marker.png"),
+              SizedBox(height: 20,),
+              Text('Running on: $_platformVersion\n'),
+              SizedBox(height: 20,),
+              Text('Locate on: $_platformLocation\n'),
+              SizedBox(height: 20,),
+              Text('Lat: $_platformLat\n'),
+              SizedBox(height: 20,),
+              Text('Lon: $_platformLon\n'),
+            ],
+          ),
         ),
       ),
     );
