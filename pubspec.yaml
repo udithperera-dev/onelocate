@@ -25,3 +25,10 @@ flutter:
         pluginClass: OnelocatePlugin
       ios:
         pluginClass: OnelocatePlugin
+
+topics:
+  - onelocate
+  - android
+  - ios
+  - geo-location
+  - without-gps
