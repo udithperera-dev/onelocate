@@ -17,7 +17,7 @@ To use this package, add oneroot as a dependency in your pubspec.yaml file.
 - On pubspeck.yaml
 
 ```yaml
-onelocate: ^0.1.2
+onelocate: ^0.0.1
 ```
 
 - On Dart Import
