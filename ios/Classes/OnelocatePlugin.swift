@@ -14,24 +14,39 @@ public class OnelocatePlugin: NSObject, FlutterPlugin {
     case "getPlatformVersion":
         result("iOS " + UIDevice.current.systemVersion)
     case "getLocation":
-       let url = URL(string: "http://ip-api.com/json")
-           var request = URLRequest(url: url!)
-           request.httpMethod = "POST"
-           let urlstr = "id=5&name=aaa"
-           request.httpBody = urlstr.data(using: .utf8)!
-           let session = URLSession.shared
-           session.dataTask(with: request) { (data, response, error) in
-               if error == nil, let data = data, let response = response as? HTTPURLResponse {
-                   print("Content-Type: \(response.allHeaderFields["Content-Type"] ?? "")")
-                   print("statusCode: \(response.statusCode)")
-                   completion(response.statusCode)
-                   print(String(data: data, encoding: .utf8) ?? "")
-               } else {
-                   completion(404)
-               }
-           }.resume()
+        DispatchQueue.main.async {
+          let url = URL(string: "http://ip-api.com/json")!
+          let task = URLSession.shared.dataTask(with: url) { data, response, error in
+              guard
+                  error == nil,
+                  let data = data,
+                  let string = String(data: data, encoding: .utf8)
+              else {
+                  print(error ?? "Unknown error")
+                  return
+              }
+              let dict = string.toJSON() as? [String:AnyObject]
+              let requestParams = [
+                "country": dict?["country"],
+                "countryCode": dict?["countryCode"],
+                "city": dict?["city"],
+                "zip": dict?["zip"],
+                "lat": dict?["lat"],
+                "lon": dict?["lon"],
+                ]
+              result(requestParams)
+          }
+          task.resume()
+        }
     default:
       result(FlutterMethodNotImplemented)
     }
   }
+}
+
+extension String {
+    func toJSON() -> Any? {
+        guard let data = self.data(using: .utf8, allowLossyConversion: false) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+    }
 }
