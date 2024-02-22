@@ -39,10 +39,10 @@ class _MyAppState extends State<MyApp> {
 
     try {
       await _onelocatePlugin.getLocation().then((value){
-        _platformLocation = value!['city'].toString() ?? 'Unknown location';
-        _platformLocation = _platformLocation+", "+ value!['country'].toString() ?? 'Unknown location';
-        _platformLat = value!['lat'].toString() ?? 'Unknown location';
-        _platformLon = value!['lon'].toString() ?? 'Unknown location';
+        _platformLocation = value!['city'].toString();
+        _platformLocation = "$_platformLocation, ${value['country']}";
+        _platformLat = value['lat'].toString();
+        _platformLon = value['lon'].toString();
       });
     } on PlatformException {
       platformVersion = 'Failed to get location.';
