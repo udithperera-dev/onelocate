@@ -1,6 +1,6 @@
 name: onelocate
 description: Introducing our innovative Location Fetching plugin called OneLocate, a powerful tool that allows you to check the device location without GPS.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/udithperera-dev/onelocate
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  plugin_platform_interface: ^2.1.8
 
 dev_dependencies:
   flutter_test:
